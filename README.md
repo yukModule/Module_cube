@@ -1,8 +1,8 @@
 # Module_cube
 
-!(pic)[pic/modulecube.png]
+![pic](pic/modulecube.png)
 
-!(视频)[https://www.bilibili.com/video/BV1c84y1Y7Qu/]
+![video](https://www.bilibili.com/video/BV1c84y1Y7Qu/)
 
 ## 硬件准备
 - esp32开发板 我使用的是 DOIT Esp32 DevKit v1 ~~其实都差不多~~
