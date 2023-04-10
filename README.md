@@ -1,6 +1,6 @@
 # Module_cube
 
-!(pic)[pic/m_c.png]
+!(pic)[pic/modulecube.png]
 
 !(视频)[https://www.bilibili.com/video/BV1c84y1Y7Qu/]
 
