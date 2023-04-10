@@ -1,6 +1,7 @@
 # Module_cube
 
-!(视频)[pic/m_c.png]
+!(pic)[pic/m_c.png]
+
 !(视频)[https://www.bilibili.com/video/BV1c84y1Y7Qu/]
 
 ## 硬件准备
