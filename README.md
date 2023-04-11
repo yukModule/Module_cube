@@ -33,7 +33,7 @@
 
 ## 技术协助
 你可以在一下获得**技术帮助**:
-- [GitHub](https://github.com/yukModule/LogicPen_Raspberry_Pi_pico/)
+- [GitHub](https://github.com/yukModule/)
 - [B站](https://space.bilibili.com/22951795)
 
 ## 参与作者
