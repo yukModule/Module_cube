@@ -1,10 +1,52 @@
+> 该项目没有使用pcb，全是飞线
+
+> 无法开源3d打印外壳的模型，因为集成模块的差异会导致最终成品的差异
+
+
 # Module_cube
 
 ![pic](pic/modulecube.png)
 
-![video](https://www.bilibili.com/video/BV1c84y1Y7Qu/)
+[视频演示](https://www.bilibili.com/video/BV1c84y1Y7Qu/)
 
-## 硬件准备
+
+## 介绍
+**项目**概述:
+- 一个高颜值的透明小电视
+- 已实现功能如下
+  - 菜单选择
+  - 主界面
+    - 当前时间
+    - 当前气温
+    - 当前天气
+    - 当前湿度
+    - 当前风速
+  - 日历
+  - 五日温度曲线
+  - 同步时间
+  - 同步天气
+
+## 已知问题
+当前已知且**尚未解决**的问题:
+- 同步时间会因为访问超时而报错，需要断电重启
+- 游戏功能还没做
+
+## 技术协助
+你可以在一下获得**技术帮助**:
+- [GitHub](https://github.com/yukModule/LogicPen_Raspberry_Pi_pico/)
+- [B站](https://space.bilibili.com/22951795)
+
+## 参与作者
+- MkM
+  - bilibili 无我识l心空妙有
+
+## 使用许可
+在该项目中你必须遵守一下条款:
+- 随便用，有什么问题后果自负 (oﾟvﾟ)ノ
+
+# 开发教程
+
+## 物料清单
 - esp32开发板 我使用的是 DOIT Esp32 DevKit v1 ~~其实都差不多~~
 - 小于2G的micro sd 卡
 - tft-240x240 spi通信 st7789芯片的显示屏
@@ -19,8 +61,8 @@
 | RES    | pin15                      |
 | DC     | pin2                       |
 | CS     | pin5                       |
-| BLC    | VIN/不连接(具体看屏幕手册) |
-|        |                            |
+| BLC    | VIN(是否连接具体看屏幕手册) |
+
 
 | 陀螺仪 | esp32 |
 | ------ | ----- |
@@ -35,44 +77,40 @@
 | CS       |  pin19     |
 
 ## 内存卡与图片准备
-1. 清空sd中所有文件 新建 user.txt [此为之后开发的内容，暂时无用]
-2. 将你需要显示的图片放到[pic/img]内
-	1. 图片要求 220x220像素 imgx.png x为整数 并保证[pic/img]内整数从0开始连续
-	2. 使用win自带的图片编辑器修改图片可能会导致程序无法识别 我使用的是[Aseprite]软件
-3. 打开 [pic/转dat.py] 修改代码
-	1. 例：img文件夹中有25个png，所以range(1,26)
-4. 正常运行后会在当前文件夹生成[.dat]文件，将所有的[.dat]复制到sd卡根目录
-	1. 保证你的python安装了 struct 和 numpy
-	2. 若报错，建议使用[Aseprite]软件或其他工具修改图片
-5. 将内存卡插入读卡器模块
-```python
-if __name__ == '__main__':
-    for i in range(1,26):
-        main(f"img/img{i}.png", f"img{i}.dat")
-```
+- 将文件中的全部导入sd卡
+  - 文件目录
+    - all to sdcard 
 
+- 导入自定义图片
+  - 文件目录
+    - png2dat
+      - img (你所需要转换的png图片)
+      - 转dat.py (修改for的个数后运行)
+  - 得到的所有的 *img{i}.dat* 替换到sdcard
 
 ## 程序准备
 1. 下载并安装Thonny编译器
 2. 使用USB将esp32开发板与电脑相连，并在Thonny中找到该串口
 	1. 若未找到，请自行百度，安装串口驱动
-	2. [1. 开发环境搭建 (itprojects.cn)]https://doc.itprojects.cn/0006.zhishi.esp32/02.doc/index.html#/01.dajianhuanjing 参考网址
-3. 将固件[esp32-20220618-v1.19.1.bin]烧录至开发板上
-4. 将[备份]文件夹中的所有文件，复制到开发板中
-5. 修改[weather.py]中 你的wifi名与密码 并保存
+	2. 开发环境搭建 参考 [itprojects.cn](https://doc.itprojects.cn/0006.zhishi.esp32/02.doc/index.html#/01.dajianhuanjing) 
+3. 将固件 **esp32-20220618-v1.19.1.bin** 烧录至开发板上
+4. 将 **all to esp32** 文件夹中的所有文件，复制到开发板中
+5. 修改 **weather.py** 中 你的wifi名与密码 并保存
 
 ## 天气预报接口
-1. 注册和风天气 (https://console.qweather.com/#/console?lang=zh)
+1. [注册和风天气](https://console.qweather.com/#/console?lang=zh)
 2. 申请免费API接口 教程自行百度 获取key
 3. 3日内天气 https://devapi.qweather.com/v7/weather/3d?location=[城市ID]&key=[你的key]
 	1. 例 济南：https://devapi.qweather.com/v7/weather/3d?location=101120101&key=233233233
 4. 当前天气信息 https://devapi.qweather.com/v7/weather/now?location=[your_id]&key=[your_key]
 5. 以当前信息为例，浏览器打开网站你将看到一下信息
-	1. {"code":"200","updateTime":"2023-01-15T09:27+08:00","fxLink":"http://hfx.link/2x41","now":{"obsTime":"2023-01-15T09:12+08:00","temp":"-5","feelsLike":"-9","icon":"104","text":"阴","wind360":"69","windDir":"东北风","windScale":"2","windSpeed":"8","humidity":"26","precip":"0.0","pressure":"1012","vis":"30","cloud":"98","dew":"-22"},"refer":{"sources":["QWeather","NMC","ECMWF"],"license":["CC BY-SA 4.0"]}}
-6. 将key与id填入代码中 [weather.py #52 #56] Ctrl+S 保存
+   ```
+	{"code":"200","updateTime":"2023-01-15T09:27+08:00","fxLink":"http://hfx.link/2x41","now":{"obsTime":"2023-01-15T09:12+08:00","temp":"-5","feelsLike":"-9","icon":"104","text":"阴","wind360":"69","windDir":"东北风","windScale":"2","windSpeed":"8","humidity":"26","precip":"0.0","pressure":"1012","vis":"30","cloud":"98","dew":"-22"},"refer":{"sources":["QWeather","NMC","ECMWF"],"license":["CC BY-SA 4.0"]}}
+    ```
+6. 确保上述操作无误后，将key与id填入代码中 [weather.py #52 #56] Ctrl+S 保存
 
 ## 运行
-- 在Thonny中运行[testmain2.py]
+- 在Thonny中运行 **testmain2.py**
 
 ## 城市ID
 > Ctrl+F 搜索即可
