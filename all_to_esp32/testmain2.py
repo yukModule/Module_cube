@@ -75,6 +75,8 @@ accel = mpu6050.accel(i2c)
 accel_dict = accel.get_values()
 print(accel_dict)
 
+# 如果需要外部供电启动，将下面一行取消注释
+# weather.sync_ntp()
 
 while True:
     accel_dict = accel.get_values()
