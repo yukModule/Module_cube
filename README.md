@@ -35,6 +35,7 @@
 你可以在一下获得**技术帮助**:
 - [GitHub](https://github.com/yukModule/)
 - [B站](https://space.bilibili.com/22951795)
+- [git博客](https://yukmodule.github.io/)
 
 ## 参与作者
 - MkM
