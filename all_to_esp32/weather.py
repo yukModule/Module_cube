@@ -84,7 +84,16 @@ def sync_ntp():
     import ntptime
     ntptime.NTP_DELTA = 3155644800
     ntptime.host = 'ntp1.aliyun.com'
-    ntptime.settime()
+    while True:   #时间校准
+        try:
+            print('time ing')
+            ntptime.settime()
+            print('time ok')
+            break;
+        except:
+            print('time no')
+            time.sleep(1)
+
 
 def load():
     date_list=[]
