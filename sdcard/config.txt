@@ -1,0 +1,6 @@
+SSID mkm_iqoowifi
+PASSWORD abc123123abc1237
+mirror 0
+location_key location=101120101&key=7c6c07ef0ab84050905dda6d98e71de0
+pic_num 25
+range_pic 0
