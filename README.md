@@ -4,7 +4,8 @@
 
 # 💎Module_cube
 
-![pic](pic/modulecube.png)
+![show](show/p2.jpg)
+![show](show/p1.jpg)
 
 [🚀b站视频演示](https://www.bilibili.com/video/BV1c84y1Y7Qu/)
 
