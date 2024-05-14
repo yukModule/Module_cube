@@ -7,7 +7,7 @@
 ![show](show/p2.jpg)
 ![show](show/p1.jpg)
 
-[🚀b站视频演示](https://www.bilibili.com/video/BV1c84y1Y7Qu/)
+[🚀b站视频演示](https://www.bilibili.com/video/BV1Es421A7g5/)
 
 [🚀Github项目地址](https://github.com/yukModule/Module_cube)
 
